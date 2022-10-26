@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  get 'pages/index'
   root to: 'pages#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get '*path', to: 'pages#index', via: :all
+
   
   
 namespace :api do
