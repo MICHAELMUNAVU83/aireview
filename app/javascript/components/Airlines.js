@@ -21,8 +21,8 @@ function Airlines() {
   return (
     <div>
       Airlines
-      {displayAirlines}
       <Link to="/reviews">reviews</Link>
+      {displayAirlines}
     </div>
   );
 }
