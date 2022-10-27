@@ -4,10 +4,12 @@ one:
   title: MyString
   description: MyString
   score: 1
+  user: one
   airline: one
 
 two:
   title: MyString
   description: MyString
   score: 1
+  user: two
   airline: two
