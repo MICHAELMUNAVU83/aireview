@@ -1,8 +1,14 @@
 class Api::V1::ReviewsController < ApplicationController
     protect_from_forgery with: :null_session
 
+    def index
+        reviews = Review.where(user_id: current_user.id)
+        render json: reviews
+    end
+
     def create
         review = Review.new(review_params)
+        review.user = current_user
         if review.save
             render json: review
         else

@@ -1,14 +1,30 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 function Airlines() {
+  const [allAirlines, setAllAirlines] = useState([]);
   useEffect(() => {
-    fetch("https://mytecheventsapi.herokuapp.com/events")
+    fetch("/api/v1/airlines")
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        data ? setAllAirlines(data) : setAllAirlines([]);
+      });
   }, []);
-  console.log("Airlines");
+  console.log(allAirlines);
 
-  return <div>Airlines</div>;
+  const displayAirlines = allAirlines.map((airline) => (
+    <div key={airline.id}>
+      <p>{airline.name}</p>
+      <Link to={`/airlines/${airline.slug}`}>{airline.name}</Link>
+    </div>
+  ));
+
+  return (
+    <div>
+      Airlines
+      <Link to="/reviews">reviews</Link>
+      {displayAirlines}
+    </div>
+  );
 }
 
 export default Airlines;
