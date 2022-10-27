@@ -1,20 +1,23 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: 'pages#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
   # root "articles#index"
 
-  get '*path', to: 'pages#index', via: :all
 
-  
-  
-namespace :api do
-  namespace :v1 do
-    resources :airlines, param: :slug
-    resources :reviews, only: [:create, :destroy]
+  devise_scope :user do
+     get '/users/sign_out' => 'devise/sessions#destroy' 
   end
-end   
+  
+  
+  namespace :api do
+    namespace :v1 do
+      resources :airlines, param: :slug
+      resources :reviews, only: [:create, :destroy]
+    end
+  end   
 
 
 end

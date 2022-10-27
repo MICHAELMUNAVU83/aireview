@@ -45,6 +45,9 @@ gem "bootsnap", require: false
 
 gem 'webpacker'
 # Use Sass to process CSS
+
+
+gem 'devise'
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
